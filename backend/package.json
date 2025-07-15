@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && tsc && npm run zip",
+    "zip": "mkdir -p dist-zips && zip -j dist-zips/createTask.zip dist/handlers/tasks/createTask.js && zip -j dist-zips/getTasks.zip dist/handlers/tasks/getTasks.js && zip -j dist-zips/updateTask.zip dist/handlers/tasks/updateTask.js && zip -j dist-zips/deleteTask.zip dist/handlers/tasks/deleteTask.js",
     "dev": "ts-node src/handlers/createTask.ts",
-    "test": "ts-node test/createTask.test.ts",
-    "clean": "rm -rf dist"
+    "test": "ts-node test/tasks/createTask.test.ts",
+    "clean": "rm -rf dist dist-zips"
   },
   "keywords": [],
   "author": "",
