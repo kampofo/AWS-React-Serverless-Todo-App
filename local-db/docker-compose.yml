@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:15 # Use official Postgres image version 15
+    environment:
+      POSTGRES_USER: admin # The DB superuser username inside the container
+      POSTGRES_PASSWORD: password # Password for the DB superuser
+      POSTGRES_DB: todoappdb # Default database created on container start
+    ports:
+      - "5432:5432" # Maps container’s port 5432 (Postgres default) to local machine’s 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Persist database data across container restarts
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:
