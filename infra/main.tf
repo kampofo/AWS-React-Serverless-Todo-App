@@ -26,22 +26,16 @@ resource "aws_security_group" "rds_sg" {
 # PostgreSQL RDS instance (Free Tier eligible)
 resource "aws_db_instance" "todo_postgres" {
   identifier = "todo-postgres-db"
-
   # Free‑Tier class
   instance_class = "db.t3.micro"
-
   engine = "postgres"
   # engine_version        = "15.5"   # optional—omit for latest
-
   db_name = "todoappdb" # ← was `name`
-
   username = var.db_username
   password = var.db_password # move to Secrets Manager later
-
   allocated_storage      = 20   # GB
   publicly_accessible    = true # lock down in prod
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
-
   skip_final_snapshot = true
 }
 
