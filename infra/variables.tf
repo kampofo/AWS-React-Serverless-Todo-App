@@ -17,7 +17,3 @@ variable "db_password" {
   type        = string
   sensitive   = true
 }
-
-variable "db_host" {
-  description = "RDS endpoint (manually retrieved or via output)"
-}
