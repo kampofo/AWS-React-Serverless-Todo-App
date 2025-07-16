@@ -77,3 +77,30 @@ resource "aws_lambda_function" "update_task" {
     }
   }
 }
+
+resource "aws_lambda_function" "migrate_db" {
+  function_name = "migrate-db"
+  handler       = "migrate.handler"
+  runtime       = "nodejs20.x"
+  role          = aws_iam_role.lambda_role.arn
+
+  filename         = "${path.module}/../backend/dist-zips/migrate.zip"
+  source_code_hash = filebase64sha256("${path.module}/../backend/dist-zips/migrate.zip")
+
+  environment {
+    variables = {
+      DB_HOST     = aws_db_instance.todo_postgres.address
+      DB_USER     = var.db_username
+      DB_PASSWORD = var.db_password
+      DB_NAME     = var.db_name
+    }
+  }
+}
+
+resource "null_resource" "run_migrations" {
+  depends_on = [aws_lambda_function.migrate_db]
+
+  provisioner "local-exec" {
+    command = "aws lambda invoke --function-name migrate-db --region us-east-1 out.json"
+  }
+}
