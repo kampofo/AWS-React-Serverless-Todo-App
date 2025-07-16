@@ -1,6 +1,17 @@
 resource "aws_apigatewayv2_api" "http_api" {
   name          = "todo-http-api"
   protocol_type = "HTTP"
+
+  cors_configuration {
+    allow_origins = [
+      "http://localhost:5173",       # dev site
+      "https://your-prod-domain.com" # add prod domain later
+    ]
+    allow_methods     = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allow_headers     = ["Content-Type", "Authorization"]
+    allow_credentials = false # set true only if you’ll send cookies
+    max_age           = 3600  # seconds browser can cache preflight
+  }
 }
 
 resource "aws_apigatewayv2_stage" "default" {
