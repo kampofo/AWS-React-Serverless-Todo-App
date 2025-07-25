@@ -7,12 +7,12 @@ A full-stack serverless task management application built with **React**, **AWS 
 
 ## 🔧 Tech Stack
 
-- **Frontend**: React (Vite), hosted on S3 + CloudFront  
+- **Frontend**: React (Vite), (TODO) hosted on S3 + CloudFront  
 - **Backend**: AWS Lambda (Node.js), API Gateway (HTTP API)  
-- **Auth**: AWS Cognito (JWT-based login/signup)  
-- **Database**: Aurora PostgreSQL (Serverless v2 via RDS Proxy)  
+- **Auth**: (TODO) AWS Cognito (JWT-based login/signup)  
+- **Database**: RDS PostgreSQL
 - **Infrastructure**: Terraform  
-- **Local Dev**: Docker (PostgreSQL), LocalStack (optional)  
+- **Local Dev**: Docker (PostgreSQL), (TODO) LocalStack (optional)  
 
 ---
 
