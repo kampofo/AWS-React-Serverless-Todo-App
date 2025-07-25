@@ -1,7 +1,7 @@
 # AWS-React-Serverless-Todo-App
 # 📝 Task Tracker
 
-A full-stack serverless task management application built with **React**, **AWS Lambda (Node.js)**, and **Aurora PostgreSQL**. This project demonstrates a modern cloud-native architecture using **API Gateway**, **Cognito for authentication**, and **Infrastructure as Code (Terraform)** to manage and deploy all AWS resources.
+A full-stack serverless task management application built with **React**, **AWS Lambda (Node.js)**, and **RDS PostgreSQL**. This project demonstrates a modern cloud-native architecture using **API Gateway**, **Cognito for authentication**, and **Infrastructure as Code (Terraform)** to manage and deploy all AWS resources.
 
 ---
 
